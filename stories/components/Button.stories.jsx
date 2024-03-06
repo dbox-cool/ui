@@ -10,8 +10,20 @@ export default {
     parameters:{
         layout: "centered"
     },
+    argTypes:{
+        variant: {
+            // options: Object.keys(buttonVariants ),
+            options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link' ],
+            control: {type: 'select'}
+        },
+        size: {
+            options: ['default', 'lg', 'sm', 'icon'],
+            control: {type: 'select'}
+        }
+    },
     args: {
-        variants: buttonVariants
+        variant: 'default',
+        children: "hey"
     }
 
 };
