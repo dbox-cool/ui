@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  * @param {String} label just a label
  * @returns {Element}
