@@ -1,10 +1,10 @@
 // import { Meta, StoryObj } from "@storybook/react";
 // eslint-disable-next-line no-unused-vars
-import {Button, buttonVariants} from "../../src/components/Button/Button";
+import {Button, buttonVariants} from "../../src/components/shadcn/Button/Button";
 
 /** @type {import('@storybook/react').Meta} */
 export default {
-    title: 'DBOX/Button',
+    title: 'SHADCN/Button',
     component: Button,
     tags: ["autodocs"],
     parameters:{
@@ -12,13 +12,15 @@ export default {
     },
     argTypes:{
         variant: {
-            // options: Object.keys(buttonVariants ),
             options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link' ],
             control: {type: 'select'}
         },
         size: {
             options: ['default', 'lg', 'sm', 'icon'],
             control: {type: 'select'}
+        },
+        asChild: {
+            control: {type: 'boolean'}
         }
     },
     args: {
