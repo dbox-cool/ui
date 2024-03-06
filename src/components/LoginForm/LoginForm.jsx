@@ -10,7 +10,7 @@ import Button from "../shadcn/Button/Button"
 */
 const LoginForm = ({img_src, system_name = ""}) => {
   return (
-    <section className="bg-background h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-background h-full w-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
             <div>
             <img
