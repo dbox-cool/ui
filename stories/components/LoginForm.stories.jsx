@@ -2,7 +2,7 @@ import LoginForm from '../../src/components/LoginForm/LoginForm';
 
 /** @type {import('@storybook/react').Meta} */
 export default {
-    title: 'DBOX/LoginForm',
+    title: 'DBOX/Auth/LoginForm',
     component: LoginForm,
     tags: ["autodocs"],
     parameters:{
