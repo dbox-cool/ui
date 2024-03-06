@@ -36,22 +36,34 @@ const buttonVariants = cva(
 )
   
   /**
-   * @link https://ui.shadcn.com/docs/components/button
-   * @param {String} label just a label
-   * @returns {HTMLButtonElement}
-  */
-const Button = forwardRef(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-);
-Button.displayName = "Button"
+   * @typedef  {object} ButtonProps
+   * @property {string}  className tw clases
+   * @property {string}  variant default | destructive | outline | secondary | ghost | link
+   * @property {string}  size icon | sm | default | lg
+   * @property {boolean} asChild
+   * @property {Element} children JSX Elements inside the Button
+   */
  
-export { Button, buttonVariants }
+  const Button = 
+  forwardRef(
+    /** 
+      * Check dependencies here {@link https://ui.shadcn.com/docs/components/button} 
+      * @param {ButtonProps} props
+      * @param {import("react").Ref<HTMLButtonElement>} ref Reference to the Component
+      * @returns {Element}
+     */
+    ({ className, variant, size, asChild = false, ...props }, ref) => {
+      const Comp = asChild ? Slot : "button"
+      return (
+        <Comp
+          className={cn(buttonVariants({ variant, size, className }))}
+          ref={ref}
+          {...props}
+        />
+      )
+    }
+
+  );
+Button.displayName = "Button"
+
+export default Button

@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
+
+import Button from "../shadcn/Button/Button"
+
 /**
- * @param {Object} props
- * @param {String} props.img_src
+ * @param {object} props
+ * @param {string} props.img_src
+ * @param {string} props.system_name
  * @returns {Element}
 */
-const LoginForm = ({img_src}) => {
+const LoginForm = ({img_src, system_name = ""}) => {
   return (
     <section className="bg-background h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
@@ -15,7 +19,12 @@ const LoginForm = ({img_src}) => {
                 alt="logo"
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
-                Accede a tu cuenta
+                {
+                    system_name.length == 0?
+                    "Accede a tu cuenta"
+                    :
+                    `Bienvenido a ${system_name}`
+                }
             </h2>
             </div>
             {/* <MessageCard message={error} type={ETypes.DANGER} visible={!!error} /> */}
@@ -56,36 +65,16 @@ const LoginForm = ({img_src}) => {
                 </div>
             </div>
 
-            <div className="flex items-center justify-between">
-                <div className="text-sm">
-                <a
-                    className="font-medium text-primary hover:text-primary"
-                    // to="/forgot-password"
-                >
-                    ¿Olvidaste tu contraseña?
-                </a>
-                </div>
-            </div>
+            <Button variant="link" size="sm" className="m-0 p-0 h-fit" >
+                ¿Olvidaste tu contraseña?
+            </Button>
 
             <div>
-                <button
-                type="submit"
-                // disabled={loading}
-                className="group relative transition-colors flex w-full justify-center rounded-md border border-transparent bg-primary py-2 px-4 text-sm font-medium text-white hover:bg-lightgray focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                    {/* <LockClosedIcon
-                    className="h-5 w-5 text-white group-hover:text-white"
-                    aria-hidden="true"
-                    /> */}
-                </span>
-                Acceder
-                </button>
+                <Button className={"w-full"} >
+                    Acceder
+                </Button>
             </div>
             </form>
-
-            {/* <SpacerWithText text="o accede con google" />
-            <SocialSignIn setError={setError} enabled={!loading} /> */}
         </div>
     </section>
   )

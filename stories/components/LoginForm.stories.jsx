@@ -9,7 +9,8 @@ export default {
         layout: "centered"
     },
     args: {
-        img_src: ""
+        img_src: "",
+        system_name: ""
     },
 };
 
