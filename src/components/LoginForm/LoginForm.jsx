@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import Button from "../shadcn/Button/Button"
+import * as Form from '@radix-ui/react-form';
 
 /**
  * @param {object} props
@@ -28,53 +29,57 @@ const LoginForm = ({img_src = "./logo.png", system_name = ""}) => {
             </h2>
             </div>
             {/* <MessageCard message={error} type={ETypes.DANGER} visible={!!error} /> */}
-            <form
-                className="mt-8 space-y-6"
-                // onSubmit={handleSubmit}
-            >
-            <div className="-space-y-px rounded-md shadow-sm">
-                <div>
-                <label htmlFor="correo-electrónico" className="sr-only">
-                    Correo electrónico
-                </label>
-                <input
-                    id="correo-electrónico"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    // ref={emailRef}
-                    required
-                    className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
-                    placeholder="Correo electrónico"
-                />
+            <Form.Root className="mt-8">
+                <Form.Field>
+                    <Form.Message name="email" match={"valueMissing"} className="text-xs text-destructive">
+                        Ingresa tu correo electrónico
+                    </Form.Message>
+                    <Form.Message name="email" match={"typeMismatch"} className="text-xs text-destructive">
+                        Ingresa un correo electrónico válido
+                    </Form.Message>
+                    <Form.Message name="pwd" match={"valueMissing"} className="text-xs text-destructive">
+                        Ingresa tu contraseña
+                    </Form.Message>
+                </Form.Field>
+                <div className="-space-y-px rounded-md mb-1">
+                    <Form.Field name="email">
+                        <Form.Label className="sr-only">
+                            Correo Electrónico
+                        </Form.Label>
+                        <Form.Control asChild>
+                            <input
+                                className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
+                                type="email"
+                                placeholder="Correo electrónico"
+                                required
+                            />
+                        </Form.Control>
+                    </Form.Field>
+                    <Form.Field name="pwd">
+                        <Form.Label className="sr-only">
+                            Contraseña
+                        </Form.Label>
+                        <Form.Control asChild>
+                            <input
+                                className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
+                                type="password"
+                                placeholder="••••••••"
+                                required
+                            />
+                        </Form.Control>
+                        
+                    </Form.Field>
                 </div>
-                <div>
-                <label htmlFor="password" className="sr-only">
-                    Contraseña
-                </label>
-                <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    // ref={passwordRef}
-                    autoComplete="current-password"
-                    required
-                    className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-primary focus:outline-none focus:ring-primary sm:text-sm"
-                    placeholder="Contraseña"
-                />
-                </div>
-            </div>
-
-            <Button variant="link" size="sm" className="m-0 p-0 h-fit" >
-                ¿Olvidaste tu contraseña?
-            </Button>
-
-            <div>
-                <Button className={"w-full"} >
-                    Acceder
+                <Button variant="link" size="sm" className="m-0 p-0 h-fit mb-4" type="button">
+                    ¿Olvidaste tu contraseña?
                 </Button>
-            </div>
-            </form>
+                <Form.Submit asChild>
+                    <Button className={"w-full"} >
+                        Acceder
+                    </Button>
+                </Form.Submit>
+            </Form.Root>
+
         </div>
     </section>
   )
