@@ -4,12 +4,15 @@ import Button from "../shadcn/Button/Button"
 import * as Form from '@radix-ui/react-form';
 
 /**
+ * Login form made with {@link https://www.radix-ui.com/primitives/docs/components/form} and shadcn button {@link https://ui.shadcn.com/docs/components/button} 
  * @param {object} props
  * @param {string} props.img_src
  * @param {string} props.system_name
+ * @param {function(Event):void} props.onSubmit
+ * @param {function(Event):void} props.onClickForgotPassword
  * @returns {Element}
 */
-const LoginForm = ({img_src = "./logo.png", system_name = ""}) => {
+const LoginForm = ({img_src = "./logo.png", system_name = "", onSubmit, onClickForgotPassword}) => {
   return (
     <section className="bg-background h-full w-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
@@ -28,21 +31,31 @@ const LoginForm = ({img_src = "./logo.png", system_name = ""}) => {
                 }
             </h2>
             </div>
-            {/* <MessageCard message={error} type={ETypes.DANGER} visible={!!error} /> */}
-            <Form.Root className="mt-8">
-                <Form.Field>
-                    <Form.Message name="email" match={"valueMissing"} className="text-xs text-destructive">
-                        Ingresa tu correo electrónico
-                    </Form.Message>
-                    <Form.Message name="email" match={"typeMismatch"} className="text-xs text-destructive">
+            <Form.Root
+                className="mt-8"
+                onSubmit={ ev => {
+                    ev.preventDefault();
+                    onSubmit(ev);
+                } }
+            >
+                <Form.Field className="flex space-x-2">
+                    <Form.Message
+                        name="email"
+                        match={"typeMismatch"}
+                        className="text-xs text-destructive"
+                    >
                         Ingresa un correo electrónico válido
-                    </Form.Message>
-                    <Form.Message name="pwd" match={"valueMissing"} className="text-xs text-destructive">
-                        Ingresa tu contraseña
                     </Form.Message>
                 </Form.Field>
                 <div className="-space-y-px rounded-md mb-1">
                     <Form.Field name="email">
+                        <Form.Message
+                            name="email"
+                            match={(value) => value === "" }
+                            className="text-xs text-destructive"
+                        >
+                            Ingresa tu correo electrónico
+                        </Form.Message>
                         <Form.Label className="sr-only">
                             Correo Electrónico
                         </Form.Label>
@@ -70,7 +83,13 @@ const LoginForm = ({img_src = "./logo.png", system_name = ""}) => {
                         
                     </Form.Field>
                 </div>
-                <Button variant="link" size="sm" className="m-0 p-0 h-fit mb-4" type="button">
+                <Button
+                    variant="link"
+                    size="sm"
+                    className="m-0 p-0 h-fit mb-4"
+                    type="button"
+                    onClick={ ev => onClickForgotPassword(ev) }
+                >
                     ¿Olvidaste tu contraseña?
                 </Button>
                 <Form.Submit asChild>

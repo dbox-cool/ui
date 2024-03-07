@@ -1,5 +1,3 @@
-// import { Meta, StoryObj } from "@storybook/react";
-// eslint-disable-next-line no-unused-vars
 import Button from "../../src/components/shadcn/Button/Button";
 
 /** @type {import('@storybook/react').Meta} */
