@@ -7,19 +7,7 @@ export default {
     tags: ["autodocs"],
     parameters:{
         layout: "centered"
-    },
-    argTypes:{
-        img_src: {
-            control: {type: "text"}
-        },
-        system_name: {
-            control: {type: "text"}
-        }
-    },
-    args: {
-        img_src: undefined,
-        system_name: undefined
-    },
+    }
 };
 
 /** @type {import('@storybook/react').StoryObj} */
