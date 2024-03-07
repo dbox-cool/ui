@@ -14,9 +14,10 @@ import * as Form from '@radix-ui/react-form';
  * @param {object} props
  * @param {LoginOnSubmit} props.onSubmit Function that will execute once the login form submits. It already prevents event default. 
  * @param {function(Event):void} props.onClickForgotPassword Function that executes when user clicks Forgot Password button
+ * @param {function(Event):void} props.onClickRegister Function that executes when user clicks Forgot Password button
  * @returns {Element}
 */
-const LoginForm = ({onSubmit, onClickForgotPassword}) => {
+const LoginForm = ({onSubmit, onClickForgotPassword, onClickRegister}) => {
 
     return (
         <Form.Root
@@ -71,6 +72,7 @@ const LoginForm = ({onSubmit, onClickForgotPassword}) => {
                     
                 </Form.Field>
             </div>
+            <div>
             <Button
                 variant="link"
                 size="sm"
@@ -80,11 +82,27 @@ const LoginForm = ({onSubmit, onClickForgotPassword}) => {
             >
                 ¿Olvidaste tu contraseña?
             </Button>
+            </div>
             <Form.Submit asChild>
                 <Button className={"w-full font-bold"} hover="outline" >
                     Acceder
                 </Button>
             </Form.Submit>
+            {
+                onClickRegister &&
+                <div className="w-full flex flex-col items-center mt-4 text-sm">
+                    ¿Todavía no tienes una cuenta?
+                    <Button
+                        variant="link"
+                        size="sm"
+                        className="w-full m-0 p-0 h-fit mb-4"
+                        type="button"
+                        onClick={ ev => { onClickRegister(ev) } }
+                    >
+                        ¡Registrate!
+                    </Button>
+                </div>
+            }
         </Form.Root>
                 
     )
