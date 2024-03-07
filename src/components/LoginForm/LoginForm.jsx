@@ -8,7 +8,7 @@ import * as Form from '@radix-ui/react-form';
  * @param {object} props
  * @param {string} props.img_src
  * @param {string} props.system_name
- * @param {function(Event):void} props.onSubmit
+ * @param {function(string, string, Event):void} props.onSubmit onSubmit(String email, String Password, Event ev) - Function that will execute once the login form submits. It already prevents event default. 
  * @param {function(Event):void} props.onClickForgotPassword
  * @returns {Element}
 */
@@ -35,7 +35,7 @@ const LoginForm = ({img_src = "./logo.png", system_name = "", onSubmit, onClickF
                 className="mt-8"
                 onSubmit={ ev => {
                     ev.preventDefault();
-                    onSubmit(ev);
+                    onSubmit(ev.target[0].value, ev.target[1].value, ev);
                 } }
             >
                 <Form.Field className="flex space-x-2">
