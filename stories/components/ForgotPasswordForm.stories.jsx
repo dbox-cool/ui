@@ -4,7 +4,7 @@ import ForgotPasswordForm from '../../src/components/ForgotPasswordForm/ForgotPa
 export default {
     title: 'DBOX/Auth/ForgotPasswordForm',
     component: ForgotPasswordForm,
-    tags: ["autodocs"],
+    // tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },

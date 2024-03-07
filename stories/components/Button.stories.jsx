@@ -4,7 +4,7 @@ import Button from "../../src/components/shadcn/Button/Button";
 export default {
     title: 'SHADCN/Button',
     component: Button,
-    tags: ["autodocs"],
+    // tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },

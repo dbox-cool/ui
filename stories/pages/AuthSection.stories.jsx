@@ -4,7 +4,7 @@ import AuthSection from '../../src/components/AuthSection/AuthSection';
 export default {
     title: 'DBOX/Auth/Section',
     component: AuthSection,
-    tags: ["autodocs"],
+    // tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },

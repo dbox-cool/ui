@@ -4,7 +4,7 @@ import LoginForm from '../../src/components/LoginForm/LoginForm';
 export default {
     title: 'DBOX/Auth/LoginForm',
     component: LoginForm,
-    tags: ["autodocs"],
+    // tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },

@@ -4,7 +4,7 @@ import { Loading } from '../../src/components/Loading';
 export default {
     title: 'DBOX/Loading',
     component: Loading,
-    tags: ["autodocs"],
+    // tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },
