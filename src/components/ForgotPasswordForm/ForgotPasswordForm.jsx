@@ -35,6 +35,13 @@ const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
                 >
                     Ingresa un correo electrónico válido
                 </Form.Message>
+                <Form.Message
+                    name="email"
+                    match={"valueMissing"}
+                    className="text-xs text-destructive"
+                >
+                    Ingresa tu correo electrónico
+                </Form.Message>
             </Form.Field>
             <div className="-space-y-px rounded-md mb-1">
                 <Form.Field name="email">
