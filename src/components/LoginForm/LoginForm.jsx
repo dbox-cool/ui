@@ -4,12 +4,20 @@ import Button from "../shadcn/Button/Button"
 import * as Form from '@radix-ui/react-form';
 
 /**
+ * @callback LoginOnSubmit
+ * @param {string} email
+ * @param {string} password
+ * @param {Event} event
+ * @returns {void}
+*/
+
+/**
  * Login form made with {@link https://www.radix-ui.com/primitives/docs/components/form} and shadcn button {@link https://ui.shadcn.com/docs/components/button} 
  * @param {object} props
- * @param {string} props.img_src
- * @param {string} props.system_name
- * @param {function(string, string, Event):void} props.onSubmit onSubmit(String email, String Password, Event ev) - Function that will execute once the login form submits. It already prevents event default. 
- * @param {function(Event):void} props.onClickForgotPassword
+ * @param {string} props.img_src Logo image source, will use public/logo.png if not defined.
+ * @param {string} props.system_name 
+ * @param {LoginOnSubmit} props.onSubmit Function that will execute once the login form submits. It already prevents event default. 
+ * @param {function(Event):void} props.onClickForgotPassword Function that executes when user clicks Forgot Password button
  * @returns {Element}
 */
 const LoginForm = ({img_src = "./logo.png", system_name = "", onSubmit, onClickForgotPassword}) => {
