@@ -51,7 +51,7 @@ const CardTest = () => {
 
 /** @type {import('@storybook/react').Meta} */
 export default {
-    title: 'DBOX/CardContainer',
+    title: 'Aceternity/CardContainer',
     component: CardContainer,
     // render: () => { return <CardTest/> },
     // tags: ["autodocs"],
