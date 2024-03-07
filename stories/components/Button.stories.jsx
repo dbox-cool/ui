@@ -13,6 +13,10 @@ export default {
             options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link' ],
             control: {type: 'select'}
         },
+        hover: {
+            options: ['default', 'outline'],
+            control: {type: 'select'}
+        },
         size: {
             options: ['default', 'lg', 'sm', 'icon'],
             control: {type: 'select'}

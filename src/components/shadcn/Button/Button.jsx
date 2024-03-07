@@ -27,10 +27,15 @@ const buttonVariants = cva(
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
       },
+      hover: {
+        default: "",
+        outline: "hover:bg-background hover:text-primary hover:border hover:border-primary"
+      }
     },
     defaultVariants: {
       variant: "default",
       size: "default",
+      hover: "default"
     },
   }
 )
@@ -39,6 +44,7 @@ const buttonVariants = cva(
    * @typedef  {object} ButtonProps
    * @property {string}  className tw clases
    * @property {string}  variant default | destructive | outline | secondary | ghost | link
+   * @property {string}  hover default | outline | (TODO: destructive | secondary | ghost | link )
    * @property {string}  size icon | sm | default | lg
    * @property {boolean} asChild
    * @property {Element} children JSX Elements inside the Button
@@ -52,11 +58,11 @@ const buttonVariants = cva(
         * @param {import("react").Ref<HTMLButtonElement>} ref Reference to the Component
         * @returns {Element}
       */
-      ({ className, variant, size, asChild = false, ...props }, ref) => {
+      ({ className, variant, hover, size, asChild = false, ...props }, ref) => {
         const Comp = asChild ? Slot : "button"
         return (
           <Comp
-            className={cn(buttonVariants({ variant, size, className }))}
+            className={cn(buttonVariants({ variant, size, hover, className }))}
             ref={ref}
             {...props}
           />

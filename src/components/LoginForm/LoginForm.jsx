@@ -93,7 +93,7 @@ const LoginForm = ({img_src = "./logo.png", system_name = "", onSubmit, onClickF
                     ¿Olvidaste tu contraseña?
                 </Button>
                 <Form.Submit asChild>
-                    <Button className={"w-full"} >
+                    <Button className={"w-full font-bold"} hover="outline" >
                         Acceder
                     </Button>
                 </Form.Submit>
