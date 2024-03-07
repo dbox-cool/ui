@@ -76,11 +76,12 @@ const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
                 className="m-0 p-0 h-fit mb-4"
                 type="button"
                 onClick={ () => { onClickLogin() } }
+                disabled={loading}
             >
                 Volver a inicio de sesión
             </Button>
             <Form.Submit asChild>
-                <Button className={"w-full font-bold"} hover="outline" >
+                <Button className={"w-full font-bold"} hover="outline" disabled={loading} >
                     { loading && 
                         <Loading/>
                     }
