@@ -1,8 +1,11 @@
 import Button from "../shadcn/Button/Button"
+import { Loading } from "../Loading";
 import * as Form from '@radix-ui/react-form';
+import { useState } from "react";
 
 /**
  * @callback LoginOnSubmit
+ * @async
  * @param {string} email
  * @param {string} password
  * @param {Event} event
@@ -18,12 +21,20 @@ import * as Form from '@radix-ui/react-form';
 */
 const LoginForm = ({onSubmit, onClickForgotPassword}) => {
 
+    const [loading, setLoading] = useState(false);
+
     return (
         <Form.Root
             className="mt-8"
-            onSubmit={ ev => {
+            onSubmit={ async ev => {
                 ev.preventDefault();
-                onSubmit(ev.target[0].value, ev.target[1].value, ev);
+                setLoading(true);
+                try {
+                    await onSubmit(ev.target[0].value, ev.target[1].value, ev);
+                } catch (error) {
+                    console.log(error);
+                }
+                setLoading(false);
             } }
         >
             <Form.Field className="flex space-x-2">
@@ -78,13 +89,19 @@ const LoginForm = ({onSubmit, onClickForgotPassword}) => {
                 className="m-0 p-0 h-fit mb-4"
                 type="button"
                 onClick={ () => { onClickForgotPassword() } }
+                disabled={loading}
             >
                 ¿Olvidaste tu contraseña?
             </Button>
             </div>
             <Form.Submit asChild>
-                <Button className={"w-full font-bold"} hover="outline" >
-                    Acceder
+                <Button className={"w-full font-bold"} hover="outline" disabled={loading} >
+                    { loading &&
+                        <Loading/>
+                    }
+                    { !loading &&
+                        "Acceder"
+                    }
                 </Button>
             </Form.Submit>
         </Form.Root>

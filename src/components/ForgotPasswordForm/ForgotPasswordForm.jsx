@@ -1,8 +1,11 @@
+import { useState } from "react";
 import Button from "../shadcn/Button/Button"
 import * as Form from '@radix-ui/react-form';
+import { Loading } from "../Loading";
 
 /**
  * @callback ForgotPasswordOnSubmit
+ * @async
  * @param {string} email
  * @param {Event} event
  * @returns {void}
@@ -17,12 +20,20 @@ import * as Form from '@radix-ui/react-form';
 */
 const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
 
+    const [loading, setLoading] = useState(false);
+
     return (
         <Form.Root
             className="mt-8"
-            onSubmit={ ev => {
+            onSubmit={ async ev => {
                 ev.preventDefault();
-                onSubmit(ev.target[0].value, ev);
+                setLoading(true);
+                try {
+                    await onSubmit(ev.target[0].value, ev);
+                } catch (error) {
+                    console.log(error);
+                }
+                setLoading(false);
             } }
         >
             <Form.Field className="flex space-x-2">
@@ -69,12 +80,18 @@ const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
                 className="m-0 p-0 h-fit mb-4"
                 type="button"
                 onClick={ () => { onClickLogin() } }
+                disabled={loading}
             >
                 Volver a inicio de sesión
             </Button>
             <Form.Submit asChild>
-                <Button className={"w-full font-bold"} hover="outline" >
-                    Enviar Correo
+                <Button className={"w-full font-bold"} hover="outline" disabled={loading} >
+                    { loading && 
+                        <Loading/>
+                    }
+                    { !loading &&
+                        "Enviar Correo"
+                    }
                 </Button>
             </Form.Submit>
         </Form.Root>

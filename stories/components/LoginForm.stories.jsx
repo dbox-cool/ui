@@ -7,6 +7,9 @@ export default {
     tags: ["autodocs"],
     parameters:{
         layout: "centered"
+    },
+    args: {
+        onSubmit: async () => { await new Promise( res => setTimeout(res, 3000) )  }
     }
 };
 
