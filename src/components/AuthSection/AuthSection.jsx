@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LoginForm from "../LoginForm/LoginForm";
 import ForgotPasswordForm from "../ForgotPasswordForm/ForgotPasswordForm";
+import { Button } from "../shadcn";
 
 /**
  * @callback LoginOnSubmit
@@ -24,13 +25,14 @@ import ForgotPasswordForm from "../ForgotPasswordForm/ForgotPasswordForm";
  * @param {string} props.system_name 
  * @param {LoginOnSubmit} props.LoginOnSubmit Function that will execute once the login form submits. It already prevents event default. 
  * @param {ForgotPasswordOnSubmit} props.ForgotPasswordOnSubmit Function that executes when user clicks Forgot Password button
+ * @param {function(Event):void} props.onClickRegister Function that executes when user clicks Register link button
  * @returns {Element}
 */
-const AuthSection = ({img_src = "./logo.png", system_name = "", LoginOnSubmit, ForgotPasswordOnSubmit}) => {
+const AuthSection = ({img_src = "./logo.png", system_name = "", LoginOnSubmit, ForgotPasswordOnSubmit, onClickRegister}) => {
   const [currentForm, setCurrentForm] = useState("login");
 
     return (
-        <section className="bg-background h-full w-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <section className="bg-background h-full w-full flex flex-col items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div>
                 <img
@@ -67,6 +69,21 @@ const AuthSection = ({img_src = "./logo.png", system_name = "", LoginOnSubmit, F
                     />
                 }
             </div>
+            {
+                onClickRegister &&
+                <div className="w-full flex flex-col items-center text-sm mt-4">
+                    ¿Todavía no tienes una cuenta?
+                    <Button
+                        variant="link"
+                        size="sm"
+                        className="w-full m-0 p-0 h-fit mb-4"
+                        type="button"
+                        onClick={ ev => { onClickRegister(ev) } }
+                    >
+                        ¡Registrate!
+                    </Button>
+                </div>
+            }
         </section>
     )
 }

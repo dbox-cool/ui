@@ -13,11 +13,10 @@ import * as Form from '@radix-ui/react-form';
  * Login form made with {@link https://www.radix-ui.com/primitives/docs/components/form} and shadcn button {@link https://ui.shadcn.com/docs/components/button} 
  * @param {object} props
  * @param {LoginOnSubmit} props.onSubmit Function that will execute once the login form submits. It already prevents event default. 
- * @param {function(Event):void} props.onClickForgotPassword Function that executes when user clicks Forgot Password button
- * @param {function(Event):void} props.onClickRegister Function that executes when user clicks Forgot Password button
+ * @param {function(Event):void} props.onClickForgotPassword Function that executes when user clicks Forgot Password link button
  * @returns {Element}
 */
-const LoginForm = ({onSubmit, onClickForgotPassword, onClickRegister}) => {
+const LoginForm = ({onSubmit, onClickForgotPassword}) => {
 
     return (
         <Form.Root
@@ -88,21 +87,6 @@ const LoginForm = ({onSubmit, onClickForgotPassword, onClickRegister}) => {
                     Acceder
                 </Button>
             </Form.Submit>
-            {
-                onClickRegister &&
-                <div className="w-full flex flex-col items-center mt-4 text-sm">
-                    ¿Todavía no tienes una cuenta?
-                    <Button
-                        variant="link"
-                        size="sm"
-                        className="w-full m-0 p-0 h-fit mb-4"
-                        type="button"
-                        onClick={ ev => { onClickRegister(ev) } }
-                    >
-                        ¡Registrate!
-                    </Button>
-                </div>
-            }
         </Form.Root>
                 
     )
