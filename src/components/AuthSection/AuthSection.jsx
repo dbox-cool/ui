@@ -41,10 +41,15 @@ const AuthSection = ({img_src = "./logo.png", system_name = "", LoginOnSubmit, F
                 />
                 <h2 className="mt-6 text-center text-3xl font-bold tracking-tight">
                     {
-                        system_name.length == 0?
+                        currentForm == "login" &&
+                        (system_name.length == 0?
                         "Accede a tu cuenta"
                         :
-                        `Bienvenido a ${system_name}`
+                        `Bienvenido a ${system_name}`)
+                    }
+                    {
+                        currentForm == "password" &&
+                        "Recupera tu cuenta"
                     }
                 </h2>
                 </div>
