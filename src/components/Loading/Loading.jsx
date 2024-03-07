@@ -1,11 +1,43 @@
-export const Loading = () => {
-    // return <h1>hey</h1>
+import { cva } from "class-variance-authority";
+import {cn} from "../../utils/cn";
+
+/**
+ * Loading spinner animated
+ * @param {object} props 
+ * @param {string} props.variant default | accent
+ * @param {string} props.size default | lg
+ * @param {string} props.className tw classes
+ * @returns {HTMLDivElement}
+ */
+export const Loading = ({variant, size, className}) => {
+    
+    const loadingVariants = cva(
+        "inline mr-2",
+        {
+            variants:{
+                variant:{
+                    default: "text-gray-200 animate-spin fill-primary",
+                    accent: "text-gray-200 animate-spin fill-accent"
+                },
+                size:{
+                    sm: "w-4 h-4",
+                    default: "w-8 h-8",
+                    lg: "w-16 h-16"
+                },
+            },
+            defaultVariants:{
+                variant: "default",
+                size: "default"
+            }
+        }
+    );
+    
     return (
         <div className="h-full w-full flex items-center justify-center">
             <div role="status">
                 <svg
                 aria-hidden="true"
-                className="inline w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-slate-300 fill-primary"
+                className={cn(loadingVariants({variant, size, className}))}
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
