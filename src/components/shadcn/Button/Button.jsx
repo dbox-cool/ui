@@ -1,5 +1,4 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react/prop-types */
 import { Slot } from "@radix-ui/react-slot"
 import { forwardRef } from "react"
 import { cva } from "class-variance-authority"

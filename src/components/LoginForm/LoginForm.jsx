@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import Button from "../shadcn/Button/Button"
 import * as Form from '@radix-ui/react-form';
 

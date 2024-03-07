@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import Button from "../shadcn/Button/Button"
 import * as Form from '@radix-ui/react-form';
 
@@ -24,7 +22,7 @@ const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
             className="mt-8"
             onSubmit={ ev => {
                 ev.preventDefault();
-                onSubmit(ev.target[0].value, ev.target[1].value, ev);
+                onSubmit(ev.target[0].value, ev);
             } }
         >
             <Form.Field className="flex space-x-2">
