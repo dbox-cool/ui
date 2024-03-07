@@ -1,8 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import { cn } from "../../../utils/cn";
-import React, {
+import {
   createContext,
   useState,
   useContext,
@@ -40,18 +38,12 @@ export const CardContainer = ({
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
-  /**
-   * @param {MouseEvent<HTMLDivElement>} e
-  */
-  const handleMouseEnter = (e) => {
+  const handleMouseEnter = () => {
     setIsMouseEntered(true);
     if (!containerRef.current) return;
   };
 
-  /**
-   * @param {MouseEvent<HTMLDivElement>} e
-  */
-  const handleMouseLeave = (e) => {
+  const handleMouseLeave = () => {
     if (!containerRef.current) return;
     setIsMouseEntered(false);
     containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
@@ -60,7 +52,7 @@ export const CardContainer = ({
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
       <div
         className={cn(
-          "py-20 flex items-center justify-center",
+          "flex items-center justify-center",
           containerClassName
         )}
         style={{
@@ -100,7 +92,7 @@ export const CardBody = ({
   return (
     <div
       className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
+        "h-fit w-fit [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
         className
       )}
     >
@@ -139,17 +131,18 @@ export const CardItem = ({
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
-    if (!ref.current) return;
-    if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
-    } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
-    }
-  };
+      handleAnimations();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMouseEntered]);
+    
+    const handleAnimations = () => {
+      if (!ref.current) return;
+      if (isMouseEntered) {
+        ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
+      } else {
+        ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+      }
+    };
 
   return (
     <Tag
