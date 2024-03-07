@@ -1,24 +1,38 @@
-// import { Meta, StoryObj } from "@storybook/react";
-import Button from "../../src/components/Button/Button";
+import Button from "../../src/components/shadcn/Button/Button";
 
 /** @type {import('@storybook/react').Meta} */
 export default {
-    title: 'DBOX/Button',
+    title: 'SHADCN/Button',
     component: Button,
     tags: ["autodocs"],
     parameters:{
         layout: "centered"
     },
-    args: {
-        /** Just a Label */
-        label: 'Hello World'
+    argTypes:{
+        variant: {
+            options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link' ],
+            control: {type: 'select'}
+        },
+        hover: {
+            options: ['default', 'outline'],
+            control: {type: 'select'}
+        },
+        size: {
+            options: ['default', 'lg', 'sm', 'icon'],
+            control: {type: 'select'}
+        },
+        asChild: {
+            control: {type: 'boolean'}
+        }
     },
+    args: {
+        variant: 'default',
+        children: "hey"
+    }
+
 };
 
 /** @type {import('@storybook/react').StoryObj} */
 export const Primary = {
-    args: {
-        /** Just a Label */
-        label: 'Hello World'
-    },
+
 };
