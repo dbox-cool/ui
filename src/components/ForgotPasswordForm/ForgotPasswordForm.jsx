@@ -28,7 +28,11 @@ const ForgotPasswordForm = ({onSubmit, onClickLogin}) => {
             onSubmit={ async ev => {
                 ev.preventDefault();
                 setLoading(true);
-                await onSubmit(ev.target[0].value, ev);
+                try {
+                    await onSubmit(ev.target[0].value, ev);
+                } catch (error) {
+                    console.log(error);
+                }
                 setLoading(false);
             } }
         >
