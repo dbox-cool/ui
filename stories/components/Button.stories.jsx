@@ -10,7 +10,7 @@ export default {
     },
     argTypes:{
         variant: {
-            options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link' ],
+            options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'outline-primary' ],
             control: {type: 'select'}
         },
         hover: {

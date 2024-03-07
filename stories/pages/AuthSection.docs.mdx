@@ -1,0 +1,21 @@
+import AuthSection from '../../src/components/AuthSection/AuthSection';
+import * as Stories from "./AuthSection.stories.jsx";
+import {Meta, Title, Description, Story} from "@storybook/blocks";
+
+<Meta of={Stories} />
+
+# Authentication Section
+A full screen with the Login and Forgot Password forms ready to use
+
+## Code Example
+```jsx
+import AuthSection from '../components/AuthSection/AuthSection';
+...
+<AuthSection
+    system_name="My System"
+    LoginOnSubmit={Login}
+    ForgotPasswordOnSubmit={RecoverPassword}
+    onClickRegister={ () => { goto("/signup"); } }
+/>
+...
+```

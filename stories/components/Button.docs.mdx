@@ -9,5 +9,109 @@ The [shadcn Button](https://ui.shadcn.com/docs/components/button) but using js a
 
 {/* <Button> Test </Button> */}
 
-<Story/>
+## Some Examples
+<Button>Primary</Button>
+<Button hover="outline">Primary Hover</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Destructive</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="outline-primary">Outline</Button>
+<Button variant="link">Link</Button>
+<Button variant="ghost">Ghost</Button>
+
+Play with the component in the [Story section](/story/shadcn-button--primary)
+
+## Code Example
+```jsx
+import Button from "./shadcn/Button"
+...
+<Button variant="destructive" hover="outline">Click Me!</Button>
+...
+```
+<Button variant="destructive" hover="outline">Click Me!</Button>
+
+## Manual Import
+- If this is the first shadcn component in the project, [import the dependencies](/docs/shadcn--docs).
+- Import [radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot) with `npm install @radix-ui/react-slot`
+- Copy and paste the code (be careful with the `cn` function import route).
+
+```jsx
+import { Slot } from "@radix-ui/react-slot"
+import { forwardRef } from "react"
+import { cva } from "class-variance-authority"
+
+import { cn } from "../utils/cn"
+
+/** All Style Variants */
+const buttonVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        "outline-primary":
+          "border border-primary bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+      hover: {
+        default: "",
+        outline: "border border-transparent hover:bg-background hover:text-primary hover:border hover:border-primary"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+      hover: "default"
+    },
+  }
+)
+  
+  /**
+   * @typedef  {object} ButtonProps
+   * @property {string}  className tw clases
+   * @property {string}  variant default | destructive | outline | secondary | ghost | link
+   * @property {string}  hover default | outline | (TODO: destructive | secondary | ghost | link )
+   * @property {string}  size icon | sm | default | lg
+   * @property {boolean} asChild
+   * @property {Element} children JSX Elements inside the Button
+   */
+ 
+  const Button = 
+    forwardRef(
+      /** 
+        * @param {ButtonProps} props
+        * @param {import("react").Ref<HTMLButtonElement>} ref Reference to the Component
+        * @returns {Element}
+      */
+      ({ className, variant, hover, size, asChild = false, ...props }, ref) => {
+        const Comp = asChild ? Slot : "button"
+        return (
+          <Comp
+            className={cn(buttonVariants({ variant, size, hover, className }))}
+            ref={ref}
+            {...props}
+          />
+        )
+      }
+    );
+    
+Button.displayName = "Button"
+
+export default Button;
+
+export {Button, buttonVariants};
+```
 
