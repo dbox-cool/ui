@@ -18,25 +18,25 @@ function DropdownMenu({ dropdownItem }) {
   };
 
   return (
-    <div className="relative group border border-main rounded-none">
+    <div className="relative group border border-primary rounded-none">
       <div
         className="relative inline-block" // Use inline-block positioning
         onMouseEnter={openDropdown}
         onMouseLeave={closeDropdown}
       >
-        <button className="text-main hover:bg-main hover:bg-opacity-25 px-3 py-2 text-sm font-medium ">
+        <button className="text-primary hover:bg-foreground/25 px-3 py-2 text-sm font-medium ">
           {dropdownItem.name}
         </button>
         {isDropdownOpen && (
           <div
             className="absolute left-0 right-0"
           >
-            <div className="bg-white divide-y divide-main shadow-lg mt-2">
+            <div className="bg-white divide-y divide-primary shadow-lg mt-2">
               {dropdownItem.subitems.map((subItem) => (
                 <Link
                   key={subItem.name}
                   to={subItem.href}
-                  className="block text-main hover:bg-main hover:bg-opacity-25 px-3 py-2 text-sm font-medium cursor-pointer"
+                  className="block text-primary hover:bg-foreground/25 px-3 py-2 text-sm font-medium cursor-pointer"
                 >
                   {subItem.name}
                 </Link>

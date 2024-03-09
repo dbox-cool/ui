@@ -19,74 +19,39 @@ export default function Navbar() {
     {
       name: 'INICIO',
       href: '/',
-      current: false,
+      current: true,
       dropdown: false,
       subitems: [],
     },
-    // {
-    //   name: 'EVENTOS',
-    //   href: '/evento',
-    //   current: false,
-    //   dropdown: false,
-    //   subitems: [],
-    // },
     {
-      name: 'SOBRE NOSOTROS',
-      href: '/sobrenosotros',
+      name: 'SECTION',
+      href: '/',
       current: false,
       dropdown: false,
       subitems: [],
     },
     {
-      name: 'DIRECCIÓN Y HORARIO',
-      href: '/direccionyhorario',
-      current: false,
-      dropdown: false,
-      subitems: [],
-    },
-    {
-      name: 'ESPACIOS',
-      href: '/espacios',
-      current: false,
-      dropdown: false,
-      subitems: [],
-    },
-    {
-      name: 'NUESTROS MENÚS',
-      href: '/menus',
+      name: 'DROPDOWN',
+      href: '/',
       current: false,
       dropdown: true,
       subitems: [
         {
-          name: 'CARTA',
-          href: '/menus',
+          name: 'OPT1',
+          href: '/',
           current: false,
           dropdown: false,
           subitems: [],
         },
         {
-          name: 'MENU EJECUTIVO',
-          href: '/menu-del-mar',
+          name: 'OPT2',
+          href: '/',
           current: false,
           dropdown: false,
           subitems: [],
         }
       ],
     },
-    // {
-    //   name: 'MENÚ EJECUTIVO',
-    //   href: '/menu-del-mar',
-    //   current: false,
-    //   dropdown: false,
-    //   subitems: [],
-    // },
-    // {
-    //   name: 'RESERVACIONES',
-    //   href: '/reservaciones',
-    //   current: false,
-    //   dropdown: false,
-    //   subitems: [],
-    // },
   ]);
 
     useEffect(() => {
@@ -100,7 +65,7 @@ export default function Navbar() {
 //   }, [window.location.pathname]);
 
   return (
-    <div className="h-16 fixed shadow-xl z-50 w-full bg-gradient-to-r from-background via-main to-background" aria-hidden="true">
+    <div className="h-16 fixed shadow-xl z-50 w-full bg-gradient-to-r from-background via-primary to-background" aria-hidden="true">
       <nav className="absolute -top-0.5 w-full bg-background">
         <div className="px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
@@ -108,7 +73,7 @@ export default function Navbar() {
               {/* Mobile menu button*/}
               <button
                 onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center rounded-md p-2 text-main hover:bg-lightgray hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-foreground/25 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               >
                 <span className="sr-only">Open main menu</span>
                 {isMobileMenuOpen ? (
@@ -140,11 +105,11 @@ export default function Navbar() {
                           to={item.href}
                           className={classNames(
                             item.current
-                              ? 'bg-main bg-opacity-10 text-main'
-                              : 'text-main hover:bg-main hover:bg-opacity-25 cursor-pointer',
+                              ? 'bg-primary bg-opacity-10 text-primary'
+                              : 'text-primary hover:bg-foreground/25 cursor-pointer',
                             'px-3 py-2 text-sm font-medium',
                             index >= navigation.length - 1
-                              ? 'border border-main rounded-none'
+                              ? 'border border-primary rounded-none'
                               : ''
                           )}
                         >
@@ -175,11 +140,11 @@ export default function Navbar() {
                       to={item.href}
                       className={classNames(
                         item.current
-                          ? 'bg-main bg-opacity-10 text-main'
-                          : 'text-main hover:bg-main hover:bg-opacity-25',
+                          ? 'bg-primary bg-opacity-10 text-primary'
+                          : 'text-primary hover:bg-foreground/25',
                         'px-3 py-2 text-sm font-medium',
                         index === navigation.length - 1
-                          ? 'border border-main rounded-none'
+                          ? 'border border-primary rounded-none'
                           : ''
                       )}
                     >
