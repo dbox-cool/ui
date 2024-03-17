@@ -4,12 +4,14 @@ import {Meta, Title, Description, Story} from "@storybook/blocks";
 
 <Meta of={Stories} />
 
-<Title/>
-The [shadcn Button](https://ui.shadcn.com/docs/components/button) but using js and jsdocs like a big boy. 
+<Title />
+
+The [shadcn Button](https://ui.shadcn.com/docs/components/button) but using js and jsdocs like a big boy.
 
 {/* <Button> Test </Button> */}
 
 ## Some Examples
+
 <Button>Primary</Button>
 <Button hover="outline">Primary Hover</Button>
 <Button variant="secondary">Secondary</Button>
@@ -22,18 +24,21 @@ The [shadcn Button](https://ui.shadcn.com/docs/components/button) but using js a
 Play with the component in the [Story section](/story/shadcn-button--primary)
 
 ## Code Example
+
 ```jsx
 import Button from "./shadcn/Button"
 ...
 <Button variant="destructive" hover="outline">Click Me!</Button>
 ...
 ```
+
 <Button variant="destructive" hover="outline">Click Me!</Button>
 
 ## Manual Import
-- If this is the first shadcn component in the project, [import the dependencies](/docs/shadcn--docs).
-- Import [radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot) with `npm install @radix-ui/react-slot`
-- Copy and paste the code (be careful with the `cn` function import route).
+
+* If this is the first shadcn component in the project, [import the dependencies](/docs/shadcn--docs).
+* Import [radix Slot](https://www.radix-ui.com/primitives/docs/utilities/slot) with `npm install @radix-ui/react-slot`
+* Copy and paste the code (be careful with the `cn` function import route).
 
 ```jsx
 import { Slot } from "@radix-ui/react-slot"
@@ -114,4 +119,3 @@ export default Button;
 
 export {Button, buttonVariants};
 ```
-
